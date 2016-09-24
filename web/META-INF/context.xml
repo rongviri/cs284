@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/WebApplication1"/>
+<Context path="/TestLog4j"/>
 <context-param>
   <param-name>log4jConfigLocation</param-name>
   <param-value>/WEB-INF/log4j-myapp.properties</param-value>
