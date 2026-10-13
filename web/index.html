@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body>
+	<div ng-app="loginModule" ng-controller="loginController">
+		<h2>Please enter your login</h2>
+		User Name: <input type="text" ng-model="account.name">
+		Password: <input type="password" ng-model="account.pwd">
+		<button ng-click="checklogin(account.name, account.pwd)">submit</button>
+		<a href="myPage.html">myPage</a>
+	</div>
+
+	<script>
+		angular.module("loginModule", [])
+			.controller("loginController", function ($scope, $http) {
+				$scope.account = {
+					name: 'user name',
+					pwd: 'xxxxxx'
+				};
+				$scope.checklogin = function (userName, password) {
+					$http({
+						url: "http://localhost:3001/checkUser",
+						method: "GET",
+						params: $scope.account
+					}).then(function (response) {
+						alert(response.data);
+					});
+				}
+			});
+	</script>
+</body>
+
 </html>
